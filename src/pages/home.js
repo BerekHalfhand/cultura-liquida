@@ -1,10 +1,12 @@
 import React from 'react'
+import Page from 'components/page'
 
 const Home = () => {
   return (
-    <>
-      <div style={{height: 2000}}>home sweet home</div>
-    </>
+    <Page>
+      <div>home sweet home</div>
+      <img src="img/angry-one.jpg" alt="Angry Shroom" />
+    </Page>
   )
 }
 

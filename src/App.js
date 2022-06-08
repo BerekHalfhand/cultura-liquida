@@ -1,4 +1,4 @@
-import './App.css'
+import './App.scss'
 // import Button from 'react-bootstrap/Button';
 import { Route, Routes } from 'react-router-dom'
 
@@ -10,7 +10,7 @@ import Cart from './pages/cart'
 
 function App() {
   return (
-    <div className="App">
+    <section className="App">
       <Header />
       <Routes>
         <Route exact path="/" element={ <Home/> } />
@@ -18,7 +18,7 @@ function App() {
         <Route exact path="/blog" element={ <Blog/> } />
         <Route exact path="/cart" element={ <Cart/> } />
       </Routes>
-    </div>
+    </section>
   );
 }
 

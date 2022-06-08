@@ -1,10 +1,11 @@
 import React from 'react'
+import Page from 'components/page'
 
 const Blog = () => {
   return (
-    <>
-      <div style={{height: 2000}}>blog sweet blog</div>
-    </>
+    <Page>
+      <div>blog sweet blog</div>
+    </Page>
   )
 }
 

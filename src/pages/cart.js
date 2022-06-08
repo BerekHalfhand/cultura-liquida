@@ -1,10 +1,11 @@
 import React from 'react'
+import Page from 'components/page'
 
 const Cart = () => {
   return (
-    <>
-      <div style={{height: 2000}}>cart sweet cart</div>
-    </>
+    <Page>
+      <div>cart sweet cart</div>
+    </Page>
   )
 }
 
