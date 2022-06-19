@@ -2,8 +2,8 @@ import React from 'react'
 
 const Page = ({ children }) => {
   return (
-    <div class="page-container">
-      <div class="page">
+    <div className="page-container">
+      <div className="page">
         {children}
       </div>
     </div>
