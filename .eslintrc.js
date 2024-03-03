@@ -67,7 +67,8 @@ module.exports = {
           ['components', './src/components'],
           ['pages', './src/pages'],
           ['contexts', './src/contexts'],
-          ['hooks', './src/hooks']
+          ['hooks', './src/hooks'],
+          ['api', './src/api']
         ]
       }
     }

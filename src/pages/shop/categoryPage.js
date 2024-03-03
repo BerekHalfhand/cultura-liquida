@@ -5,14 +5,25 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import PageComponent from 'components/pageComponent'
 import ShopItemComponent from 'components/shop/shopItemComponent'
-import useFetch from 'hooks/useFetch'
+// import useGet from 'hooks/useGet'
+
+import { useQuery } from '@tanstack/react-query'
+import getFn from 'api/get'
+
 
 const CategoryPage = () => {
   const { categoryId } = useParams()
-  const {data, error} = useFetch(`getOneCategory/${categoryId}`)
+  // const {data, error} = useGet(`getOneCategory/${categoryId}`)
 
-  if (error) return <div>Request Failed</div>; // Error state
-	if (!data) return <div>Loading...</div>; // Loading state
+  const { isLoading, isError, data } = useQuery({
+    queryKey: [`category:${categoryId}`],
+    queryFn: () => getFn({url:`getOneCategory/${categoryId}`})
+  })
+  // console.log('q', q)
+
+  if (isError) return <div>Request Failed</div>; // Error state
+	if (isLoading) return <div>Loading...</div>; // Loading state
+  console.log('data', data)
 
   return (
     <PageComponent>

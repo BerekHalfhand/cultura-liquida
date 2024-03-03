@@ -3,7 +3,7 @@ import useSWR from 'swr'
 
 const fetcher = url => axios.get(url).then(res => res.data);
 
-export const useFetch = query => {
+export const useGet = query => {
   const { data, error } = useSWR(
 		`${process.env.REACT_APP_API_URL}/api/${query}`,
 		fetcher
@@ -15,4 +15,4 @@ export const useFetch = query => {
   }
 }
 
-export default useFetch
+export default useGet

@@ -1,8 +1,14 @@
 import React, { useContext } from 'react'
+import { Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import getFn from 'api/get'
+
 import PageComponent from 'components/pageComponent'
 import CartItemComponent from 'components/cart/cartItemComponent'
 import CartContext from 'contexts/cartContext/cartContext'
-import useFetch from 'hooks/useFetch'
+// import useGet from 'hooks/useGet'
+
 
 const getItemsForCart = (allItems, cartItems) => cartItems.map(i => {
   const fullItem = allItems.find(item => item.itemId === i.id)
@@ -14,11 +20,18 @@ const getItemsForCart = (allItems, cartItems) => cartItems.map(i => {
 })
 
 const CartPage = () => {
-  const { cartItems } = useContext(CartContext)
-  const {data, error} = useFetch(`getAllItems`)
+  const { cartItems, getTotalPrice } = useContext(CartContext)
+  const navigate = useNavigate()
 
-  if (error) return <div>Request Failed</div>; // Error state
-	if (!data) return <div>Loading...</div>; // Loading state
+  const { isLoading, isError, data } = useQuery({
+    queryKey: [`items`],
+    queryFn: () => getFn({url:`getAllItems`})
+  })
+
+  // const {data, error} = useGet(`getAllItems`)
+
+  if (isError) return <div>Request Failed</div>; // Error state
+	if (isLoading) return <div>Loading...</div>; // Loading state
   console.log('cart data', data)
   const cart = getItemsForCart(data, cartItems)
   console.log('cart', cart)
@@ -26,9 +39,15 @@ const CartPage = () => {
   return (
     <PageComponent>
       {cart.length ? (
-        cart.map(item => (
-          <CartItemComponent item={item} />
-        ))
+          <div>
+            {cart.map(item => (
+              <CartItemComponent item={item} />
+            ))}
+            <div>
+              Total: {getTotalPrice(cart)}
+            </div>
+            <Button variant="primary" onClick={() => navigate('/check-out')}>Check out</Button>
+          </div>
       ) : 'Nada por ahora'}
     </PageComponent>
   )

@@ -6,7 +6,7 @@ import CartContext from './cartContext'
 const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([])
 
-  const addToCart = async (item, amount) => {
+  const addToCart = async (item, amount = 1) => {
     if (!item || !item._id) return false
     const id = item?.itemId
 
@@ -30,7 +30,7 @@ const CartProvider = ({ children }) => {
     })
   }
 
-  const removeFromCart = (item, amount = 1) => {
+  const removeFromCart = (item, amount = 1, removeAll = false) => {
     if (!item || !item._id) return false
     const id = item?.itemId
 
@@ -39,7 +39,7 @@ const CartProvider = ({ children }) => {
       const index = v.findIndex(i => i.id === id)
 
       if (index >= 0) {
-        if (v[index].amount - amount <= 0){
+        if (removeAll || v[index].amount - amount <= 0){
           v.splice(index, 1)
         } else {
           v[index] = {
@@ -47,6 +47,30 @@ const CartProvider = ({ children }) => {
             amount: v[index].amount - amount
           }
         }
+      }
+
+      return v
+    })
+  }
+
+  const setToCart = (item, amount = 1) => {
+    if (!item || !item._id) return false
+    const id = item?.itemId
+
+    setCartItems(value => {
+      const v = [...value]
+      const index = v.findIndex(i => i.id === id)
+
+      if (index >= 0) {
+        v[index] = {
+          id,
+          amount
+        }
+      } else {
+        v.push({
+          id,
+          amount
+        })
       }
 
       return v
@@ -61,14 +85,17 @@ const CartProvider = ({ children }) => {
     return count
   }
 
+  const getTotalPrice = cart => cart.reduce((acc, obj) => acc + (obj.amount * obj.price), 0)
+
   const value = 
   useMemo(() => ({
     cartItems,
     itemsCount: getItemsCount(),
+    getTotalPrice,
     addToCart,
+    setToCart,
     removeFromCart
   }), [JSON.stringify(cartItems)])
-  console.log('value', value)
 
   return (
     <CartContext.Provider value={value}>
