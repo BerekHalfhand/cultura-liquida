@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const Category = ({ title, link, image, description }) => {
   return (
-    <Link to={link} >
+    <Link to={`item${link}`} >
       <Card>
         <Card.Img variant="top" src={image} />
         <Card.Body>
