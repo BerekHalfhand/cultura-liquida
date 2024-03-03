@@ -2,14 +2,14 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Page from 'components/page'
-import Category from 'components/shop/category'
+import PageComponent from 'components/pageComponent'
+import ShopCategoryComponent from 'components/shop/shopCategoryComponent'
 import axios from 'axios'
 import useSWR from 'swr'
 
 const fetcher = url => axios.get(url).then(res => res.data);
 
-const Shop = () => {
+const ShopPage = () => {
   const {data, error} = useSWR(
 		`${process.env.REACT_APP_API_URL}/api/getAll`,
 		fetcher
@@ -20,18 +20,18 @@ const Shop = () => {
   console.log('data', data)
 
   return (
-    <Page>
+    <PageComponent>
       <Container >
         <Row className="justify-content-center">
           {data.map(cat => (
             <Col className="justify-content-center d-flex" key={cat._id}>
-              <Category {...cat} />
+              <ShopCategoryComponent {...cat} />
             </Col>
           ))}
         </Row>
       </Container>
-    </Page>
+    </PageComponent>
   )
 }
 
-export default Shop
+export default ShopPage

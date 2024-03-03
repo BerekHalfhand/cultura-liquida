@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import {LinkContainer} from 'react-router-bootstrap'
-import { Button, Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import CartContext from 'contexts/cartContext/cartContext'
 
-const Header = () => {
+const HeaderComponent = () => {
   const { itemsCount } = useContext(CartContext)
   console.log('header', itemsCount)
 
@@ -31,4 +31,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default HeaderComponent

@@ -6,8 +6,9 @@ import CartContext from './cartContext'
 const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([])
 
-  const addToCart = async (id, amount) => {
-      console.log('addToCart', id, amount)
+  const addToCart = async (item, amount) => {
+    if (!item || !item._id) return false
+    const id = item?.itemId
 
     setCartItems(value => {
       const v = [...value]
@@ -29,7 +30,10 @@ const CartProvider = ({ children }) => {
     })
   }
 
-  const removeFromCart = (id, amount = 1) => {
+  const removeFromCart = (item, amount = 1) => {
+    if (!item || !item._id) return false
+    const id = item?.itemId
+
     setCartItems(value => {
       const v = [...value]
       const index = v.findIndex(i => i.id === id)

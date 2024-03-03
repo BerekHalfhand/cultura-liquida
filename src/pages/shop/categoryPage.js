@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Page from 'components/page'
-import Item from 'components/shop/item'
+import PageComponent from 'components/pageComponent'
+import ShopItemComponent from 'components/shop/shopItemComponent'
 import axios from 'axios'
 import useSWR from 'swr'
 
@@ -22,17 +22,17 @@ const CategoryPage = () => {
 	if (!data) return <div>Loading...</div>; // Loading state
 
   return (
-    <Page>
+    <PageComponent>
       <Container >
         <Row className="justify-content-center">
-          {data.map(cat => (
-            <Col className="justify-content-center d-flex" key={cat._id}>
-              <Item {...cat} />
+          {data.map(item => (
+            <Col className="justify-content-center d-flex" key={item._id}>
+              <ShopItemComponent item={item} />
             </Col>
           ))}
         </Row>
       </Container>
-    </Page>
+    </PageComponent>
   )
 }
 

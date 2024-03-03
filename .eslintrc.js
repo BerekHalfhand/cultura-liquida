@@ -43,7 +43,7 @@ module.exports = {
     'import/no-import-module-exports': 'off',
     camelcase: 'off',
     'import/extensions': ['warn', { js: 'never', jsx: 'never' }],
-    'no-underscore-dangle': ['warn', { allowAfterThis: true }],
+    'no-underscore-dangle': 'off',
     'no-plusplus': 'off',
     'one-var': 'off',
     'import/no-named-as-default': 0,

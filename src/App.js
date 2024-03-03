@@ -3,18 +3,18 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import CartProvider from 'contexts/cartContext/cartProvider'
 
-import Header from 'components/header'
-import HomePage from 'pages/home'
-import ShopPage from 'pages/shop'
-import BlogPage from 'pages/blog'
-import CartPage from 'pages/cart'
-import CategoryPage from 'pages/shop/category'
+import HeaderComponent from 'components/headerComponent'
+import HomePage from 'pages/homePage'
+import ShopPage from 'pages/shopPage'
+import BlogPage from 'pages/blogPage'
+import CartPage from 'pages/cartPage'
+import CategoryPage from 'pages/shop/categoryPage'
 
 function App() {
   return (
     <section className="App">
       <CartProvider>
-        <Header />
+        <HeaderComponent />
         <Routes>
           <Route exact path="/" element={ <HomePage/> } />
           <Route exact path="/shop" element={ <ShopPage/> } />

@@ -4,7 +4,7 @@ import { Button, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import CartContext from 'contexts/cartContext/cartContext'
 
-const Item = ({ _id, title, link, image, description }) => {
+const CartItemComponent = ({ _id, title, link, image, description }) => {
   const { cartItems, addToCart, removeFromCart } = useContext(CartContext)
   console.log('Item', cartItems)
 
@@ -28,18 +28,18 @@ const Item = ({ _id, title, link, image, description }) => {
   )
 }
 
-Item.defaultProps = {
+CartItemComponent.defaultProps = {
   title: '',
   link: '/',
   image: 'img/spores.webp',
   description: '',
 }
 
-Item.propTypes = {
+CartItemComponent.propTypes = {
   title: PropTypes.string,
   link: PropTypes.string,
   image: PropTypes.string,
   description: PropTypes.string,
 }
 
-export default Item
+export default CartItemComponent

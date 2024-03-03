@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Page = ({ children }) => {
+const PageComponent = ({ children }) => {
   return (
     <div className="page-container">
       <div className="page">
@@ -10,4 +10,4 @@ const Page = ({ children }) => {
   )
 }
 
-export default Page
+export default PageComponent

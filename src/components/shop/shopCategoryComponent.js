@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 
-const Category = ({ title, categoryId, image, description }) => {
+const ShopCategoryComponent = ({ title, categoryId, image, description }) => {
   return (
     <Link to={`category/${categoryId}`} >
       <Card>
@@ -19,18 +19,17 @@ const Category = ({ title, categoryId, image, description }) => {
   )
 }
 
-Category.defaultProps = {
+ShopCategoryComponent.defaultProps = {
   title: '',
-  link: '/',
   image: 'img/spores.webp',
   description: '',
 }
 
-Category.propTypes = {
+ShopCategoryComponent.propTypes = {
   title: PropTypes.string,
-  link: PropTypes.string,
+  categoryId: PropTypes.string.isRequired,
   image: PropTypes.string,
   description: PropTypes.string,
 }
 
-export default Category
+export default ShopCategoryComponent
