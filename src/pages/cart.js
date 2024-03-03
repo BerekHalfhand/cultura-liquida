@@ -4,9 +4,16 @@ import CartContext from 'contexts/cartContext/cartContext'
 
 const Cart = () => {
   const { cartItems } = useContext(CartContext)
+
   return (
     <Page>
-      <div>cart sweet cart</div>
+      {!!cartItems.length ? (
+        cartItems.map(i => (
+          <div>
+            {i.id} - {i.amount}
+          </div>
+        ))
+      ) : 'Nada por ahora'}
     </Page>
   )
 }

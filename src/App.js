@@ -3,12 +3,12 @@ import './App.scss'
 import { Route, Routes } from 'react-router-dom'
 import CartProvider from 'contexts/cartContext/cartProvider'
 
-import Header from './components/header'
-import Home from './pages/home'
-import Shop from './pages/shop'
-import Blog from './pages/blog'
-import Cart from './pages/cart'
-import ShopItem from './pages/shop/shopItem'
+import Header from 'components/header'
+import HomePage from 'pages/home'
+import ShopPage from 'pages/shop'
+import BlogPage from 'pages/blog'
+import CartPage from 'pages/cart'
+import CategoryPage from 'pages/shop/category'
 
 function App() {
   return (
@@ -16,11 +16,11 @@ function App() {
       <CartProvider>
         <Header />
         <Routes>
-          <Route exact path="/" element={ <Home/> } />
-          <Route exact path="/shop" element={ <Shop/> } />
-          <Route exact path="/blog" element={ <Blog/> } />
-          <Route exact path="/cart" element={ <Cart/> } />
-          <Route path="/shop/item/:itemId" element={ <ShopItem/> } />
+          <Route exact path="/" element={ <HomePage/> } />
+          <Route exact path="/shop" element={ <ShopPage/> } />
+          <Route exact path="/blog" element={ <BlogPage/> } />
+          <Route exact path="/cart" element={ <CartPage/> } />
+          <Route path="/shop/category/:categoryId" element={ <CategoryPage/> } />
         </Routes>
       </CartProvider>
     </section>

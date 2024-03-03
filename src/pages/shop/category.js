@@ -10,13 +10,13 @@ import useSWR from 'swr'
 
 const fetcher = url => axios.get(url).then(res => res.data);
 
-const ShopItem = () => {
-  const { itemId } = useParams()
+const CategoryPage = () => {
+  const { categoryId } = useParams()
   const {data, error} = useSWR(
-		`${process.env.REACT_APP_API_URL}/api/getOne/${itemId}`,
+		`${process.env.REACT_APP_API_URL}/api/getOne/${categoryId}`,
 		fetcher
 	)
-  console.log('ShopItem data', data, itemId)
+  console.log('CategoryPage data', data, categoryId)
 
   if (error) return <div>Request Failed</div>; // Error state
 	if (!data) return <div>Loading...</div>; // Loading state
@@ -36,4 +36,4 @@ const ShopItem = () => {
   )
 }
 
-export default ShopItem
+export default CategoryPage

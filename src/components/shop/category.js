@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 
-const Category = ({ title, link, image, description }) => {
+const Category = ({ title, categoryId, image, description }) => {
   return (
-    <Link to={`item${link}`} >
+    <Link to={`category/${categoryId}`} >
       <Card>
         <Card.Img variant="top" src={image} />
         <Card.Body>
