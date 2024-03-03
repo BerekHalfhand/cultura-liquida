@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import CartProvider from 'contexts/cartContext/cartProvider'
 
 import HeaderComponent from 'components/headerComponent'
+
 import HomePage from 'pages/homePage'
 import ShopPage from 'pages/shopPage'
 import BlogPage from 'pages/blogPage'

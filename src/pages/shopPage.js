@@ -4,20 +4,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import PageComponent from 'components/pageComponent'
 import ShopCategoryComponent from 'components/shop/shopCategoryComponent'
-import axios from 'axios'
-import useSWR from 'swr'
-
-const fetcher = url => axios.get(url).then(res => res.data);
+import useFetch from 'hooks/useFetch'
 
 const ShopPage = () => {
-  const {data, error} = useSWR(
-		`${process.env.REACT_APP_API_URL}/api/getAll`,
-		fetcher
-	)
+  const {data, error} = useFetch('getAllCategories')
 
   if (error) return <div>Request Failed</div>; // Error state
 	if (!data) return <div>Loading...</div>; // Loading state
-  console.log('data', data)
 
   return (
     <PageComponent>

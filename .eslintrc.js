@@ -66,7 +66,8 @@ module.exports = {
         map: [
           ['components', './src/components'],
           ['pages', './src/pages'],
-          ['contexts', './src/contexts']
+          ['contexts', './src/contexts'],
+          ['hooks', './src/hooks']
         ]
       }
     }

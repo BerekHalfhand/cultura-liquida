@@ -5,18 +5,11 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import PageComponent from 'components/pageComponent'
 import ShopItemComponent from 'components/shop/shopItemComponent'
-import axios from 'axios'
-import useSWR from 'swr'
-
-const fetcher = url => axios.get(url).then(res => res.data);
+import useFetch from 'hooks/useFetch'
 
 const CategoryPage = () => {
   const { categoryId } = useParams()
-  const {data, error} = useSWR(
-		`${process.env.REACT_APP_API_URL}/api/getOne/${categoryId}`,
-		fetcher
-	)
-  console.log('CategoryPage data', data, categoryId)
+  const {data, error} = useFetch(`getOneCategory/${categoryId}`)
 
   if (error) return <div>Request Failed</div>; // Error state
 	if (!data) return <div>Loading...</div>; // Loading state
