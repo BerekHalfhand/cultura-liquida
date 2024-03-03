@@ -1,5 +1,5 @@
 import './App.scss'
-// import Button from 'react-bootstrap/Button';
+import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import CartProvider from 'contexts/cartContext/cartProvider'
 
