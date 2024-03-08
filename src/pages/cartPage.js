@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
+
+
 import getFn from 'api/get'
 
 import PageComponent from 'components/pageComponent'
@@ -41,7 +43,7 @@ const CartPage = () => {
       {cart.length ? (
           <div>
             {cart.map(item => (
-              <CartItemComponent item={item} />
+              <CartItemComponent key={item._id} item={item} />
             ))}
             <div>
               Total: {getTotalPrice(cart)}

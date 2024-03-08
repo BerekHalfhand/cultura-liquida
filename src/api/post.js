@@ -1,6 +1,6 @@
 export const postFn = async params => {
   try {
-    console.log("params-", params);
+    // console.log("params-", params);
     if (typeof params.url === "string") {
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/api/${params.url}`,
@@ -12,7 +12,7 @@ export const postFn = async params => {
           },
         }
       )
-    console.log("response-", response);
+    // console.log("response-", response);
 
       if (!response.ok) {
         throw new Error('Network response was not ok')

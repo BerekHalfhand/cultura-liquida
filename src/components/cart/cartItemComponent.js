@@ -1,11 +1,10 @@
 import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { Image, Form, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import CartContext from 'contexts/cartContext/cartContext'
 
 const CartItemComponent = ({ item }) => {
-  const { cartItems, setToCart, removeFromCart } = useContext(CartContext)
+  const { setToCart, removeFromCart } = useContext(CartContext)
   
   const [amount, setAmount] = useState(item.amount)
 

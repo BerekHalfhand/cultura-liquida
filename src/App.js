@@ -16,6 +16,7 @@ import ShopPage from 'pages/shopPage'
 import BlogPage from 'pages/blogPage'
 import CartPage from 'pages/cartPage'
 import CheckOutPage from 'pages/checkOutPage'
+import SuccessPage from 'pages/checkOut/success'
 import CategoryPage from 'pages/shop/categoryPage'
 import NotFoundPage from 'pages/notFoundPage'
 
@@ -42,6 +43,7 @@ function App() {
             <Route exact path="/blog" element={ <BlogPage/> } />
             <Route exact path="/cart" element={ <CartPage/> } />
             <Route exact path="/check-out" element={ <CheckOutPage/> } />
+            <Route exact path="/check-out/success" element={ <SuccessPage/> } />
             <Route path="/shop/category/:categoryId" element={ <CategoryPage/> } />
 
             <Route path='*' element={<NotFoundPage />}/>
