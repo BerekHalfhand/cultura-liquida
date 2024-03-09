@@ -43,8 +43,8 @@ const CheckOutPage = () => {
     setValidated(true)
   }
 
-  if (isError) return <div>Request Failed</div>; // Error state
-	if (isLoading) return <div>Loading...</div>; // Loading state
+  // if (isError) return <div>Request Failed</div>; // Error state
+	// if (isLoading) return <div>Loading...</div>; // Loading state
   // console.count('render')
 
   return (
@@ -76,7 +76,7 @@ const CheckOutPage = () => {
               name="surname"
               rules={[
                 {
-                  required: true,
+                  required: false,
                   message: 'Required!',
                 },
               ]}
@@ -92,7 +92,7 @@ const CheckOutPage = () => {
               name="phone_number"
               rules={[
                 {
-                  required: true,
+                  required: false,
                   message: 'Required!',
                 },
               ]}
@@ -106,7 +106,7 @@ const CheckOutPage = () => {
               name="id_number"
               rules={[
                 {
-                  required: true,
+                  required: false,
                   message: 'Required!',
                 },
               ]}
@@ -127,7 +127,7 @@ const CheckOutPage = () => {
               name="street_name"
               rules={[
                 {
-                  required: true,
+                  required: false,
                   message: 'Required!',
                 },
               ]}
@@ -141,7 +141,7 @@ const CheckOutPage = () => {
               name="street_number"
               rules={[
                 {
-                  required: true,
+                  required: false,
                   message: 'Required!',
                 },
               ]}
@@ -157,7 +157,7 @@ const CheckOutPage = () => {
               name="state"
               rules={[
                 {
-                  required: true,
+                  required: false,
                   message: 'Required!',
                 },
               ]}
@@ -171,7 +171,7 @@ const CheckOutPage = () => {
               name="city"
               rules={[
                 {
-                  required: true,
+                  required: false,
                   message: 'Required!',
                 },
               ]}
