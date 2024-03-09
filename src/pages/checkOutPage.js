@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 import { useQuery } from '@tanstack/react-query'
-import { Button, Form, Col, Row } from 'react-bootstrap'
+import { Button, Form, Input, Col, Row } from 'antd'
 
 import PageComponent from 'components/pageComponent'
 import CartContext from 'contexts/cartContext/cartContext'
@@ -34,28 +34,13 @@ const CheckOutPage = () => {
     initMercadoPago(PUBLIC_KEY) // Public key
   }, [])
 
-  const onSubmit = e => {
-    // FUCKING BOOTSTRAP
-    e.preventDefault()
-    e.stopPropagation()
-    
-    // setValidated(false)
-    // const form = e.currentTarget
-    // const isValid = form.checkValidity()
-    // console.log('isValid', isValid)
-
-    // const formData = new FormData(form);
-    // const values = Object.fromEntries(formData.entries())
-    // console.log('values', values)
-
-    // if (isValid)
-    //   setFormValues({
-    //     ...values,
-    //     street_name: `${values.state}, ${values.city}, ${values.street_name}, ${values.street_number}`
-    //   })
-
-    // setValidated(isValid)
-    // setValidated(true)
+  const onFinish = (values) => {
+    console.log('Success:', values)
+    setFormValues({
+      ...values,
+      street_name: `${values.state}, ${values.city}, ${values.street_name}, ${values.street_number}`
+    })
+    setValidated(true)
   }
 
   if (isError) return <div>Request Failed</div>; // Error state
@@ -64,7 +49,7 @@ const CheckOutPage = () => {
 
   return (
     <PageComponent>
-      <Form noValidate validated={validated} onSubmit={onSubmit}>
+      <Form onFinish={onFinish}>
         <Row>
           <Col>
             <h6>Datos Personales</h6>
@@ -72,30 +57,62 @@ const CheckOutPage = () => {
         </Row>
         <Row>
           <Col>
-            <Form.Group className="mb-3">
-              <Form.Label>Nombre</Form.Label>
-              <Form.Control required name="name" />
-            </Form.Group>
+            <Form.Item
+              label="Nombre"
+              name="name"
+              rules={[
+                {
+                  required: true,
+                  message: 'Required!',
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
           </Col>
           <Col>
-            <Form.Group className="mb-3">
-              <Form.Label>Apellidos</Form.Label>
-              <Form.Control required name="surname" />
-            </Form.Group>
+            <Form.Item
+              label="Apellidos"
+              name="surname"
+              rules={[
+                {
+                  required: true,
+                  message: 'Required!',
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
           </Col>
         </Row>
         <Row>
           <Col>
-            <Form.Group className="mb-3">
-              <Form.Label>Teléfono</Form.Label>
-              <Form.Control required name="phone_number" />
-            </Form.Group>
+            <Form.Item
+              label="Teléfono"
+              name="phone_number"
+              rules={[
+                {
+                  required: true,
+                  message: 'Required!',
+                },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
           </Col>
           <Col>
-            <Form.Group className="mb-3">
-              <Form.Label>Número de identificación</Form.Label>
-              <Form.Control type="number" required name="id_number" />
-            </Form.Group>
+            <Form.Item
+              label="Número de identificación"
+              name="id_number"
+              rules={[
+                {
+                  required: true,
+                  message: 'Required!',
+                },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
           </Col>
         </Row>
         <Row>
@@ -105,35 +122,67 @@ const CheckOutPage = () => {
         </Row>
         <Row>
           <Col>
-            <Form.Group className="mb-3">
-              <Form.Label>Direccion</Form.Label>
-              <Form.Control required name="street_name" placeholder="Calle" />
-            </Form.Group>
+            <Form.Item
+              label="Direccion"
+              name="street_name"
+              rules={[
+                {
+                  required: true,
+                  message: 'Required!',
+                },
+              ]}
+            >
+              <Input placeholder="Calle" />
+            </Form.Item>
           </Col>
           <Col>
-            <Form.Group className="mb-3">
-              <Form.Label>Addicional</Form.Label>
-              <Form.Control name="street_number" placeholder="Apartamento, habitacion, etc (opcional)" />
-            </Form.Group>
+            <Form.Item
+              label="Addicional"
+              name="street_number"
+              rules={[
+                {
+                  required: true,
+                  message: 'Required!',
+                },
+              ]}
+            >
+              <Input placeholder="Apartamento, habitacion, etc (opcional)" />
+            </Form.Item>
           </Col>
         </Row>
         <Row>
           <Col>
-            <Form.Group className="mb-3">
-              <Form.Label>Departamento</Form.Label>
-              <Form.Control required name="state" placeholder="Caldas" />
-            </Form.Group>
+            <Form.Item
+              label="Departamento"
+              name="state"
+              rules={[
+                {
+                  required: true,
+                  message: 'Required!',
+                },
+              ]}
+            >
+              <Input placeholder="Caldas" />
+            </Form.Item>
           </Col>
           <Col>
-            <Form.Group className="mb-3">
-              <Form.Label>Municipio</Form.Label>
-              <Form.Control required name="city" placeholder="Manizales" />
-            </Form.Group>
+            <Form.Item
+              label="Municipio"
+              name="city"
+              rules={[
+                {
+                  required: true,
+                  message: 'Required!',
+                },
+              ]}
+            >
+              <Input placeholder="Manizales" />
+            </Form.Item>
           </Col>
         </Row>
         <Row>
           <Col>
-            <Button variant="primary" type="submit">
+            <Button type="primary" htmlType="submit">
               Submit
             </Button>
           </Col>

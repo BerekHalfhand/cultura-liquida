@@ -1,23 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Card from 'react-bootstrap/Card'
+import { Card } from 'antd'
 import { Link } from 'react-router-dom'
 
-const ShopCategoryComponent = ({ title, categoryId, image, description }) => {
-  return (
-    <Link to={`category/${categoryId}`} >
-      <Card>
-        <Card.Img variant="top" src={image} />
-        <Card.Body>
-          <Card.Title>{title}</Card.Title>
-          <Card.Text>
-            {description}
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </Link>
-  )
-}
+const { Meta } = Card
+
+const ShopCategoryComponent = ({ title, categoryId, image, description }) => (
+  <Link to={`category/${categoryId}`} >
+    <Card
+      hoverable
+      style={{ width: 480 }}
+      cover={<img alt="category" src={image} />}
+    >
+      <Meta title={title} description={description} />
+    </Card>
+  </Link>
+)
 
 ShopCategoryComponent.defaultProps = {
   title: '',

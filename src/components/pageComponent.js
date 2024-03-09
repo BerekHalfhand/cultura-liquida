@@ -1,13 +1,22 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { Layout } from 'antd'
 
-const PageComponent = ({ children }) => {
-  return (
-    <div className="page-container">
-      <div className="page">
-        {children}
-      </div>
-    </div>
-  )
+const { Content } = Layout
+
+const PageComponent = ({ children }) => (
+  <div className="page-container">
+    <Content className="page">
+      {children}
+    </Content>
+  </div>
+)
+
+PageComponent.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 }
 
 export default PageComponent

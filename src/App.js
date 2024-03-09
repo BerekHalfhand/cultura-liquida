@@ -1,14 +1,13 @@
 import './App.scss'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-
 import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import { Layout } from 'antd'
 
 import CartProvider from 'contexts/cartContext/cartProvider'
-
 import HeaderComponent from 'components/headerComponent'
 
 import HomePage from 'pages/homePage'
@@ -34,6 +33,7 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <section className="App">
+      <Layout>
       <QueryClientProvider client={queryClient}>
         <CartProvider>
           <HeaderComponent />
@@ -50,6 +50,7 @@ function App() {
           </Routes>
         </CartProvider>
       </QueryClientProvider>
+      </Layout>
     </section>
   );
 }

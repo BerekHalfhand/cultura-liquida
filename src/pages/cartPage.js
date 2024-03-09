@@ -1,15 +1,13 @@
 import React, { useContext } from 'react'
-import { Button } from 'react-bootstrap'
+import { Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-
 
 import getFn from 'api/get'
 
 import PageComponent from 'components/pageComponent'
 import CartItemComponent from 'components/cart/cartItemComponent'
 import CartContext from 'contexts/cartContext/cartContext'
-// import useGet from 'hooks/useGet'
 
 
 const getItemsForCart = (allItems, cartItems) => cartItems.map(i => {
@@ -48,7 +46,7 @@ const CartPage = () => {
             <div>
               Total: {getTotalPrice(cart)}
             </div>
-            <Button variant="primary" onClick={() => navigate('/check-out')}>Check out</Button>
+            <Button type="primary" onClick={() => navigate('/check-out')}>Check out</Button>
           </div>
       ) : 'Nada por ahora'}
     </PageComponent>

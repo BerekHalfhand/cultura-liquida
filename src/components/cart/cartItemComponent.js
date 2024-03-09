@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
-import { Image, Form, Button } from 'react-bootstrap'
+import { Image, Button, Input } from 'antd'
 import CartContext from 'contexts/cartContext/cartContext'
 
 const CartItemComponent = ({ item }) => {
@@ -20,7 +20,7 @@ const CartItemComponent = ({ item }) => {
   return (
     <div className="cart-item-wrap">
       <div className='cart-item-image'>
-        <Image src={item.image} alt={item.title} roundedCircle />
+        <Image src={item.image} alt={item.title} />
       </div>
       <div className='cart-item-info'>
         <div>
@@ -34,9 +34,7 @@ const CartItemComponent = ({ item }) => {
         </div>
       </div>
       <div className='cart-item-actions'>
-        <Form>
-          <Form.Control type="number" value={amount} onChange={onChangeInput} />
-        </Form>
+        <Input type="number" value={amount} onChange={onChangeInput} />
         <Button variant="secondary" onClick={onRemoveBtn}>Remove all</Button>
         Total: {amount * item.price}
       </div>
