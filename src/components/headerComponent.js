@@ -27,14 +27,16 @@ const HeaderComponent = () => {
         </Item>
       ),
       key: 'shop'
-    },{
-      label: (
-        <Item onClick={() => navigate('/blog')}>
-          Blog
-        </Item>
-      ),
-      key: 'blog'
-    },{
+    },
+    // {
+    //   label: (
+    //     <Item onClick={() => navigate('/blog')}>
+    //       Blog
+    //     </Item>
+    //   ),
+    //   key: 'blog'
+    // },
+    {
       label: (
         <Item onClick={() => navigate('/cart')}>
           Carrito {!!itemsCount && `(${itemsCount})`}
