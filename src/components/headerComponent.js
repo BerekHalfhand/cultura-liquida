@@ -1,7 +1,8 @@
 import React, { useContext, useMemo } from 'react'
 import { Layout, Menu } from 'antd'
 import CartContext from 'contexts/cartContext/cartContext'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+// import logo from ''
 
 const { Header } = Layout
 const { Item } = Menu
@@ -58,10 +59,12 @@ const HeaderComponent = () => {
         alignItems: 'center',
       }}
     >
+      <Link className="logo" to='/' >
+        <img src="img/logo/logo.png" alt="Angry Shroom" />
+      </Link>
       <Menu
         theme="dark"
         mode="horizontal"
-        // defaultSelectedKeys={['2']}
         items={items}
         style={{
           flex: 1,

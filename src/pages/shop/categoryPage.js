@@ -1,6 +1,5 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { Row, Col } from 'antd'
 import PageComponent from 'components/pageComponent'
 import ShopItemComponent from 'components/shop/shopItemComponent'
 // import useGet from 'hooks/useGet'
@@ -25,13 +24,11 @@ const CategoryPage = () => {
 
   return (
     <PageComponent>
-      <Row>
+      <div className='shop-grid'>
         {data.map(item => (
-          <Col key={item._id}>
-            <ShopItemComponent item={item} />
-          </Col>
+          <ShopItemComponent item={item} />
         ))}
-      </Row>
+      </div>
     </PageComponent>
   )
 }

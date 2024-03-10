@@ -1,5 +1,4 @@
 import React from 'react'
-import { Row, Col } from 'antd'
 import PageComponent from 'components/pageComponent'
 import ShopCategoryComponent from 'components/shop/shopCategoryComponent'
 
@@ -19,13 +18,11 @@ const ShopPage = () => {
 
   return (
     <PageComponent>
-        <Row>
-          {data.map(cat => (
-            <Col key={cat._id}>
-              <ShopCategoryComponent {...cat} />
-            </Col>
-          ))}
-        </Row>
+      <div className='shop-grid'>
+        {data.map(cat => (
+          <ShopCategoryComponent key={cat._id} {...cat} />
+        ))}
+      </div>
     </PageComponent>
   )
 }
